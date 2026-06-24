@@ -1,0 +1,29 @@
+class Solution {
+    public int[] separateDigits(int[] nums) {
+        ArrayList<Integer> a=new ArrayList<>();
+        for(int num:nums)
+        {
+            int s=0;
+            ArrayList<Integer> ab=new ArrayList<>();
+            while(num>0)
+            {
+                
+                ab.add(num%10);
+                num/=10;
+                s++;
+            }
+            for(int i=s-1;i>=0;i--)
+            {
+                a.add(ab.get(i));
+            }
+        }
+        int j=a.size();
+        int ar[]=new int[j];
+        for(int i=0;i<j;i++)
+        {
+            ar[i]=a.get(i);
+        }
+        return ar;
+    }
+    
+}
