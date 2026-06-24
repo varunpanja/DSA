@@ -1,0 +1,42 @@
+class Solution {
+    public List<List<Integer>> findMatrix(int[] nums) {
+        ArrayList<List<Integer>>k=new ArrayList<>();
+        HashMap<Integer,Integer> mp=new HashMap<>();
+        int n=nums.length;
+        for(int i=0;i<n;i++)
+        {
+           if(mp.containsKey(nums[i]))
+           {
+                mp.put(nums[i],mp.get(nums[i])+1);
+           }
+           else
+           {
+                mp.put(nums[i],1);
+           }
+        }
+       
+        while(!mp.isEmpty())
+        {
+             HashMap<Integer,Integer> t = new HashMap<>(mp);
+            ArrayList<Integer> a=new ArrayList<>();
+            for(Map.Entry<Integer, Integer> e : mp.entrySet())
+            {
+                int val=e.getValue();
+                a.add(e.getKey());
+                if(val==1)
+                {
+                    t.remove(e.getKey());
+                }
+                else
+                {
+                    t.put(e.getKey(),val-1);
+                }
+                
+            }
+            k.add(a);
+            mp=t;
+        }
+        return k;
+        
+    }
+}
